@@ -941,7 +941,434 @@ body {
 <!-- HEADER -->
 <header class="header">
   <div class="header-inner">
-    <img src="QR code.png" alt="QR Code PIX" style="width:200px;height:200px;border-radius:8px;">
+    <img src="data:image/png;base64,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" alt="MediQuo">
+    <span class="header-badge">Psiquiatria Online</span>
+  </div>
+</header>
+
+<!-- ====== SCREEN 1: LANDING ====== -->
+<div id="screen-landing" class="screen active">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Consulta 100% Online e Sigilosa
+      </div>
+      <h1>Cuide da sua <span>saúde mental</span> com um psiquiatra online</h1>
+      <p class="subtitle">Agende sua consulta com psiquiatra de forma rápida e online. Sem filas, sem burocracia, com total privacidade.</p>
+
+      <div class="steps-how">
+        <h3>Com a MediQuo é assim:</h3>
+        <div class="step-item">
+          <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Você informa seus dados
+        </div>
+        <div class="step-item">
+          <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Confirma a consulta no valor de R$ 149,90
+        </div>
+        <div class="step-item">
+          <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Em até 3 dias sua consulta será agendada
+        </div>
+        <div class="step-item">
+          <svg class="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Sem uma longa espera
+        </div>
+        <div class="step-item">
+          <svg class="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Sem instalar aplicativos
+        </div>
+        <div class="step-item">
+          <svg class="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Sem precisar faltar a qualquer compromisso do dia
+        </div>
+      </div>
+
+      <div class="email-form">
+        <div class="input-group">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+          <input type="email" id="email-input" placeholder="Digite seu e-mail para começar" required>
+        </div>
+        <div class="disclaimers">
+          <label class="disclaimer-item">
+            <input type="checkbox" id="check1">
+            <span>Declaro ciência: a teleconsulta pode resultar em <strong>encaminhamento</strong> presencial; isso <strong>não é motivo para reembolso</strong>.</span>
+          </label>
+          <label class="disclaimer-item">
+            <input type="checkbox" id="check2">
+            <span>Declaro ciência: estou comprando uma consulta médica, <strong>receita/atestado</strong> somente se o médico indicar; <strong>sem garantia de reembolso se não emitidos</strong>.</span>
+          </label>
+        </div>
+        <button class="btn-primary" id="btn-start" disabled>Iniciar Consulta</button>
+        <p class="privacy-note">Ao contratar, você receberá um código de acesso no email e concorda com nossa <a href="#">Política de Privacidade</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits">
+    <div class="benefits-inner">
+      <h2>MediQuo está com você em cada passo do seu cuidado mental</h2>
+      <p class="section-sub">Você contrata uma consulta médica por R$ 149,90. O psiquiatra poderá emitir receita digital ou atestado, caso considere indicado após avaliação clínica.</p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Consulta rápida e prática</h3>
+          <p>Sem burocracia e triagens. Agende e fale direto com o psiquiatra online.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>Receita digital válida</h3>
+          <p>A receita digital (se prescrita) chega em minutos e é válida em todo o Brasil.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Privacidade total</h3>
+          <p>Atendimento 100% sigiloso e seguro. Sua saúde mental tratada com respeito.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <h3>Facilidade de pagamento</h3>
+          <p>Pague via PIX ou cartão de crédito. Simples e rápido.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Profissionais qualificados</h3>
+          <p>Psiquiatras à disposição para atender você a qualquer momento do dia.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Agendamento flexível</h3>
+          <p>Sua consulta é agendada em até 3 dias úteis. Você escolhe o melhor horário.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey steps -->
+  <section class="journey">
+    <div class="journey-inner">
+      <h2>Sua agenda de cuidados é você quem faz</h2>
+      <div class="journey-step">
+        <div class="journey-num">1</div>
+        <div>
+          <h3>Faça seu cadastro</h3>
+          <p>Envie suas informações previamente para o atendimento ser mais efetivo.</p>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num">2</div>
+        <div>
+          <h3>Confirme sua consulta</h3>
+          <p>Escolha a melhor forma de pagamento e confirme o atendimento online.</p>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num">3</div>
+        <div>
+          <h3>Faça a sua consulta</h3>
+          <p>Sua consulta será agendada em até 3 dias úteis após a confirmação do pagamento.</p>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num">4</div>
+        <div>
+          <h3>Receba a sua receita</h3>
+          <p>Após a avaliação e orientação médica, inicie o tratamento com segurança, caso haja indicação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <h2>Tratamento com confiança</h2>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Consulta rápida, médico muito atencioso. Me senti acolhida e segura para falar sobre o que estava sentindo."</p>
+        <div class="author">– Mariana, 34 anos</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Atendimento excelente, sem burocracia e com total privacidade. Consegui minha receita na mesma hora."</p>
+        <div class="author">– Ricardo, 28 anos</div>
+      </div>
+      <div class="avg-rating">
+        Nota média: <strong>4,9</strong>/5 baseada em milhares de atendimentos
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Não deixe para amanhã o cuidado com a sua saúde mental</h2>
+    <p>Aproveite a consulta 100% online para falar com o psiquiatra hoje mesmo.</p>
+    <button class="btn-white" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'})">Fazer a Consulta Agora</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>MediQuo – Consultas médicas online com prescrição rápida, segura e legal.</p>
+    <p>Consulta 100% segura e sigilosa</p>
+    <div class="footer-links">
+      <a href="#">Sobre</a>
+      <a href="#">Termos de Uso</a>
+      <a href="#">Políticas de Privacidade</a>
+    </div>
+    <p style="margin-top:12px;">RT: Leandro Moreira Matos • CRM: MG 100307</p>
+  </footer>
+</div>
+
+<!-- ====== SCREEN 2: VERIFICATION ====== -->
+<div id="screen-verify" class="screen">
+  <div class="verify-container">
+    <div class="verify-card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+      </div>
+      <h2>Verifique seu e-mail</h2>
+      <p class="desc">Enviamos um código de 6 dígitos para <strong id="verify-email"></strong></p>
+      <div class="code-inputs" id="code-inputs">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+      </div>
+      <button class="btn-primary" id="btn-verify" disabled>Verificar Código</button>
+      <p class="resend-link mt-2">Não recebeu? <a onclick="alert('Código reenviado!')">Reenviar código</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SCREEN 3: PAYMENT ====== -->
+<div id="screen-payment" class="screen">
+  <div class="payment-container">
+    <div class="payment-inner">
+      <div class="payment-main">
+        <h2 class="payment-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Finalizar Consulta
+        </h2>
+
+        <!-- Personal data -->
+        <div class="form-section">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Dados Pessoais
+          </h3>
+          <div class="form-field">
+            <label>Nome completo</label>
+            <input type="text" id="pay-name" placeholder="Seu nome completo" required>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Data de nascimento</label>
+              <input type="text" id="pay-dob" placeholder="DD/MM/AAAA" maxlength="10">
+            </div>
+            <div class="form-field">
+              <label>CPF</label>
+              <input type="text" id="pay-cpf" placeholder="000.000.000-00" maxlength="14">
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment method -->
+        <div class="form-section">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Método de Pagamento
+          </h3>
+          <div class="payment-toggle">
+            <div class="pay-option selected" data-method="card" onclick="selectPayment('card')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Cartão de Crédito
+            </div>
+            <div class="pay-option" data-method="pix" onclick="selectPayment('pix')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13.36 5.64l4.95 4.95a1 1 0 010 1.41l-4.95 4.95a1 1 0 01-1.41 0L6.99 12a1 1 0 010-1.41l4.96-4.95a1 1 0 011.41 0z"/></svg>
+              PIX
+            </div>
+          </div>
+
+          <!-- Card fields -->
+          <div id="card-fields">
+            <div class="form-field">
+              <label>Número do cartão</label>
+              <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19">
+            </div>
+            <div class="form-row three">
+              <div class="form-field">
+                <label>Validade</label>
+                <input type="text" id="card-exp" placeholder="MM/AA" maxlength="5">
+              </div>
+              <div class="form-field">
+                <label>CVV</label>
+                <input type="text" id="card-cvv" placeholder="000" maxlength="4">
+              </div>
+              <div class="form-field" style="grid-column: span 1;">
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Nome no cartão</label>
+              <input type="text" id="card-name" placeholder="Como está no cartão">
+            </div>
+          </div>
+
+          <!-- PIX info -->
+          <div id="pix-fields" class="hidden">
+            <div class="pix-info">
+              <h4>Pagamento via PIX</h4>
+              <p style="font-size:14px; color:var(--gray-600); margin-bottom:16px;">Como funciona o PIX:</p>
+              <div class="pix-step">
+                <div class="pix-step-num">1</div>
+                <span>Após confirmar, você receberá um QR Code</span>
+              </div>
+              <div class="pix-step">
+                <div class="pix-step-num">2</div>
+                <span>Escaneie com seu banco ou copie e cole a chave</span>
+              </div>
+              <div class="pix-step">
+                <div class="pix-step-num">3</div>
+                <span>Pagamento processado instantaneamente</span>
+              </div>
+              <div class="pix-step">
+                <div class="pix-step-num">4</div>
+                <span>Consulta liberada automaticamente</span>
+              </div>
+              <div class="pix-warning">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span><strong>Importante:</strong> O PIX expira em 30 minutos. Certifique-se de efetuar o pagamento dentro deste prazo.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-section" id="address-section">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Endereço de Cobrança
+          </h3>
+          <div class="form-row">
+            <div class="form-field">
+              <label>CEP</label>
+              <input type="text" id="pay-cep" placeholder="00000-000" maxlength="9">
+            </div>
+            <div class="form-field">
+              <label>Número</label>
+              <input type="text" id="pay-num" placeholder="Nº">
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Logradouro</label>
+            <input type="text" id="pay-street" placeholder="Rua, Avenida...">
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Complemento <span style="color:var(--gray-400)">(opcional)</span></label>
+              <input type="text" id="pay-comp" placeholder="Apto, Bloco...">
+            </div>
+            <div class="form-field">
+              <label>Bairro</label>
+              <input type="text" id="pay-bairro" placeholder="Bairro">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Cidade</label>
+              <input type="text" id="pay-city" placeholder="Cidade">
+            </div>
+            <div class="form-field">
+              <label>Estado</label>
+              <select id="pay-state">
+                <option value="">Selecione</option>
+                <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+                <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+                <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+                <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+                <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+                <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+                <option>SP</option><option>SE</option><option>TO</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-primary" id="btn-confirm" style="margin-top:8px;">Confirmar Consulta</button>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="order-summary">
+        <h3>Resumo do pedido</h3>
+        <div class="order-line">
+          <span>Consulta de Psiquiatria</span>
+          <span>R$ 149,90</span>
+        </div>
+        <div class="order-total">
+          <span>Total</span>
+          <span>R$ 149,90</span>
+        </div>
+        <div class="included-list">
+          <h4>O que está incluso:</h4>
+          <div class="included-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Consulta médica online de psiquiatria (sem retorno incluso)</span>
+          </div>
+          <div class="included-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Médico especialista qualificado</span>
+          </div>
+          <div class="included-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Atendimento em horário flexível</span>
+          </div>
+          <div class="included-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Receita médica digital (se necessário)</span>
+          </div>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Pagamento seguro
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Agendamento em até 3 dias úteis
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Suporte técnico incluído
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SCREEN 4: PIX QR CODE ====== -->
+<div id="screen-pix" class="screen">
+  <div class="pix-qr-container">
+    <div class="pix-qr-card">
+      <h2>Pagamento via PIX</h2>
+      <div class="pix-amount">R$ 149,90</div>
+      <div class="qr-placeholder">
+        <img src="data:image/png;base64,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" alt="QR Code PIX" style="width:200px;height:200px;border-radius:8px;">
       </div>
       <div class="pix-copy-field">
         <input type="text" value="00020126580014br.gov.bcb.pix0136mediquo-psiq-sim-2026" readonly id="pix-code">
