@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediQuo - Consulta de Psiquiatria Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple-900: #3b1578;
+  --purple-700: #5b21b6;
+  --purple-600: #6d28d9;
+  --purple-500: #7c3aed;
+  --purple-400: #a78bfa;
+  --purple-300: #c4b5fd;
+  --purple-200: #ddd6fe;
+  --purple-100: #ede9fe;
+  --purple-50: #f5f3ff;
+  --gray-900: #1a1a2e;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-300: #d1d5db;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  --white: #ffffff;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-100: #dcfce7;
+  --red-500: #ef4444;
+  --blue-500: #3b82f6;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--gray-700);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ====== HEADER ====== */
+.header {
+  background: var(--purple-700);
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(91, 33, 182, 0.3);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header img { height: 32px; }
+.header-badge {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+/* ====== SCREENS ====== */
+.screen { display: none; animation: fadeIn 0.4s ease; }
+.screen.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== LANDING ====== */
+.hero {
+  background: linear-gradient(165deg, var(--purple-50) 0%, var(--white) 50%, var(--purple-50) 100%);
+  padding: 56px 24px 48px;
+}
+.hero-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--purple-100);
+  color: var(--purple-700);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  letter-spacing: 0.2px;
+}
+.hero-badge svg { width: 16px; height: 16px; }
+.hero h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  color: var(--gray-900);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.hero h1 span { color: var(--purple-600); }
+.hero .subtitle {
+  font-size: 18px;
+  color: var(--gray-600);
+  margin-bottom: 36px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Steps list */
+.steps-how {
+  text-align: left;
+  max-width: 440px;
+  margin: 0 auto 36px;
+}
+.steps-how h3 {
+  color: var(--purple-700);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 15px;
+  color: var(--gray-700);
+}
+.step-item .icon-check {
+  width: 22px; height: 22px;
+  color: var(--purple-500);
+  flex-shrink: 0;
+}
+.step-item .icon-x {
+  width: 22px; height: 22px;
+  color: var(--gray-400);
+  flex-shrink: 0;
+}
+
+/* Email form */
+.email-form {
+  max-width: 440px;
+  margin: 0 auto;
+}
+.input-group {
+  position: relative;
+  margin-bottom: 16px;
+}
+.input-group svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; height: 20px;
+  color: var(--gray-400);
+}
+.input-group input {
+  width: 100%;
+  padding: 14px 14px 14px 44px;
+  border: 2px solid var(--gray-200);
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: var(--white);
+}
+.input-group input:focus {
+  outline: none;
+  border-color: var(--purple-400);
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.1);
+}
+
+.disclaimers {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.disclaimer-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+.disclaimer-item input[type="checkbox"] {
+  width: 18px; height: 18px;
+  margin-top: 2px;
+  accent-color: var(--purple-600);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--purple-600);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  text-transform: uppercase;
+}
+.btn-primary:hover {
+  background: var(--purple-700);
+  box-shadow: 0 4px 16px rgba(91,33,182,0.3);
+}
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled {
+  background: var(--gray-300);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.privacy-note {
+  font-size: 12px;
+  color: var(--gray-500);
+  margin-top: 14px;
+}
+.privacy-note a { color: var(--purple-600); text-decoration: underline; }
+
+/* ====== BENEFITS SECTION ====== */
+.benefits {
+  padding: 64px 24px;
+  background: var(--white);
+}
+.benefits-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.benefits h2 {
+  text-align: center;
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 12px;
+}
+.benefits .section-sub {
+  text-align: center;
+  color: var(--gray-600);
+  font-size: 16px;
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.benefit-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  border-radius: 16px;
+  padding: 28px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.benefit-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.benefit-icon {
+  width: 48px; height: 48px;
+  background: var(--purple-100);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--purple-600);
+}
+.benefit-icon svg { width: 24px; height: 24px; }
+.benefit-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+.benefit-card p {
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* Steps section */
+.journey {
+  padding: 64px 24px;
+  background: var(--purple-50);
+}
+.journey-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.journey h2 {
+  text-align: center;
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 48px;
+}
+.journey-step {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.journey-num {
+  width: 44px; height: 44px;
+  background: var(--purple-600);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.journey-step h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+}
+.journey-step p {
+  font-size: 14px;
+  color: var(--gray-600);
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 64px 24px;
+  background: var(--white);
+}
+.testimonials-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.testimonials h2 {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 36px;
+}
+.testimonial-card {
+  background: var(--gray-50);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
+  text-align: left;
+  border: 1px solid var(--gray-100);
+}
+.testimonial-card .stars { color: #f59e0b; font-size: 16px; margin-bottom: 12px; }
+.testimonial-card p {
+  font-size: 15px;
+  color: var(--gray-700);
+  font-style: italic;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.testimonial-card .author {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-500);
+}
+.avg-rating {
+  margin-top: 24px;
+  font-size: 15px;
+  color: var(--gray-600);
+}
+.avg-rating strong {
+  font-size: 28px;
+  color: var(--purple-600);
+}
+
+/* CTA */
+.cta-section {
+  padding: 64px 24px;
+  background: var(--purple-700);
+  text-align: center;
+  color: var(--white);
+}
+.cta-section h2 {
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: 16px;
+  opacity: 0.85;
+  margin-bottom: 32px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-white {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--white);
+  color: var(--purple-700);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+.btn-white:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+.footer {
+  background: var(--gray-900);
+  color: var(--gray-400);
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.footer a { color: var(--purple-300); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+.footer-links { margin-top: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+/* ====== VERIFICATION SCREEN ====== */
+.verify-container {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  background: var(--gray-50);
+}
+.verify-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 48px 36px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.verify-card .icon-wrap {
+  width: 64px; height: 64px;
+  background: var(--purple-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  color: var(--purple-600);
+}
+.verify-card .icon-wrap svg { width: 28px; height: 28px; }
+.verify-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+.verify-card .desc {
+  font-size: 14px;
+  color: var(--gray-500);
+  margin-bottom: 32px;
+}
+.verify-card .desc strong { color: var(--gray-700); }
+.code-inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.code-inputs input {
+  width: 48px; height: 56px;
+  border: 2px solid var(--gray-200);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--gray-900);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.code-inputs input:focus {
+  outline: none;
+  border-color: var(--purple-500);
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.1);
+}
+.resend-link {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-top: 20px;
+}
+.resend-link a {
+  color: var(--purple-600);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ====== PAYMENT SCREEN ====== */
+.payment-container {
+  padding: 32px 24px 48px;
+  background: var(--gray-50);
+  min-height: calc(100vh - 64px);
+}
+.payment-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .payment-inner {
+    grid-template-columns: 1fr;
+  }
+}
+.payment-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.payment-title svg { color: var(--purple-600); }
+
+.form-section {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.form-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.form-section h3 svg { width: 20px; height: 20px; color: var(--purple-500); }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 500px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+.form-row.three {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.form-field {
+  margin-bottom: 16px;
+}
+.form-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-600);
+  margin-bottom: 6px;
+}
+.form-field input, .form-field select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--gray-200);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--gray-900);
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-field input:focus, .form-field select:focus {
+  outline: none;
+  border-color: var(--purple-400);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.08);
+}
+.form-field input::placeholder { color: var(--gray-400); }
+
+/* Payment toggle */
+.payment-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.pay-option {
+  flex: 1;
+  padding: 14px 16px;
+  border: 2px solid var(--gray-200);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-600);
+  transition: all 0.2s;
+  background: var(--white);
+}
+.pay-option:hover { border-color: var(--purple-300); }
+.pay-option.selected {
+  border-color: var(--purple-500);
+  background: var(--purple-50);
+  color: var(--purple-700);
+}
+.pay-option svg { width: 22px; height: 22px; }
+
+.pix-info {
+  background: var(--purple-50);
+  border-radius: 12px;
+  padding: 24px;
+}
+.pix-info h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--purple-700);
+  margin-bottom: 16px;
+}
+.pix-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--gray-700);
+}
+.pix-step-num {
+  width: 24px; height: 24px;
+  background: var(--purple-600);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.pix-warning {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #92400e;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.pix-warning svg { flex-shrink: 0; margin-top: 1px; }
+
+/* Order summary sidebar */
+.order-summary {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 88px;
+}
+.order-summary h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 20px;
+}
+.order-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-700);
+}
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px 0 0;
+  color: var(--gray-900);
+}
+.order-total span:last-child { color: var(--purple-600); }
+.included-list {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-100);
+}
+.included-list h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gray-600);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.included-item {
+  font-size: 13px;
+  color: var(--gray-600);
+  padding: 5px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+.included-item svg { width: 16px; height: 16px; color: var(--purple-500); flex-shrink: 0; margin-top: 2px; }
+.trust-badges {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-100);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.trust-badge {
+  font-size: 13px;
+  color: var(--green-600);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.trust-badge svg { width: 16px; height: 16px; }
+
+/* ====== PIX QR SCREEN ====== */
+.pix-qr-container {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  background: var(--gray-50);
+}
+.pix-qr-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 44px 36px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.pix-qr-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+}
+.pix-qr-card .pix-amount {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--purple-600);
+  margin-bottom: 24px;
+}
+.qr-placeholder {
+  width: 200px; height: 200px;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.qr-placeholder svg { width: 200px; height: 200px; }
+.pix-copy-field {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.pix-copy-field input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 2px solid var(--gray-200);
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: monospace;
+  color: var(--gray-600);
+  background: var(--gray-50);
+}
+.btn-copy {
+  padding: 12px 18px;
+  background: var(--purple-600);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.btn-copy:hover { background: var(--purple-700); }
+.pix-timer {
+  font-size: 14px;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+}
+.pix-timer strong { color: var(--red-500); font-size: 18px; }
+.pix-waiting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--gray-500);
+  margin-top: 16px;
+}
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid var(--gray-200);
+  border-top-color: var(--purple-500);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ====== SUCCESS SCREEN ====== */
+.success-container {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  background: var(--gray-50);
+}
+.success-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 48px 36px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.success-icon {
+  width: 80px; height: 80px;
+  background: var(--green-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  animation: popIn 0.5s ease;
+}
+@keyframes popIn {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.success-icon svg { width: 40px; height: 40px; color: var(--green-600); }
+.success-card h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 12px;
+}
+.success-card p {
+  font-size: 15px;
+  color: var(--gray-600);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+.btn-schedule {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--purple-600);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  text-transform: uppercase;
+}
+.btn-schedule:hover {
+  background: var(--purple-700);
+  box-shadow: 0 4px 16px rgba(91,33,182,0.3);
+}
+.success-details {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gray-100);
+  text-align: left;
+}
+.success-detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 6px 0;
+  color: var(--gray-600);
+}
+.success-detail-row strong { color: var(--gray-900); }
+
+/* Utilities */
+.hidden { display: none !important; }
+.mt-2 { margin-top: 8px; }
+.text-error { color: var(--red-500); font-size: 13px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <img src="data:image/png;base64,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" alt="MediQuo">
+    <span class="header-badge">Psiquiatria Online</span>
+  </div>
+</header>
+
+<!-- ====== SCREEN 1: LANDING ====== -->
+<div id="screen-landing" class="screen active">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Consulta 100% Online e Sigilosa
+      </div>
+      <h1>Cuide da sua <span>saúde mental</span> com um psiquiatra online</h1>
+      <p class="subtitle">Consulta com psiquiatra em até 10 minutos. Sem filas, sem burocracia, com total privacidade.</p>
+
+      <div class="steps-how">
+        <h3>Com a MediQuo é assim:</h3>
+        <div class="step-item">
+          <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Você informa seus dados
+        </div>
+        <div class="step-item">
+          <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Confirma a consulta no valor de R$ 149,90
+        </div>
+        <div class="step-item">
+          <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Em até 10 minutos está sendo atendido pelo psiquiatra
+        </div>
+        <div class="step-item">
+          <svg class="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Sem uma longa espera
+        </div>
+        <div class="step-item">
+          <svg class="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Sem agendamento prévio
+        </div>
+        <div class="step-item">
+          <svg class="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Sem precisar faltar a qualquer compromisso do dia
+        </div>
+      </div>
+
+      <div class="email-form">
+        <div class="input-group">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+          <input type="email" id="email-input" placeholder="Digite seu e-mail para começar" required>
+        </div>
+        <div class="disclaimers">
+          <label class="disclaimer-item">
+            <input type="checkbox" id="check1">
+            <span>Declaro ciência: a teleconsulta pode resultar em <strong>encaminhamento</strong> presencial; isso <strong>não é motivo para reembolso</strong>.</span>
+          </label>
+          <label class="disclaimer-item">
+            <input type="checkbox" id="check2">
+            <span>Declaro ciência: estou comprando uma consulta médica, <strong>receita/atestado</strong> somente se o médico indicar; <strong>sem garantia de reembolso se não emitidos</strong>.</span>
+          </label>
+        </div>
+        <button class="btn-primary" id="btn-start" disabled>Iniciar Consulta</button>
+        <p class="privacy-note">Ao contratar, você receberá um código de acesso no email e concorda com nossa <a href="#">Política de Privacidade</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="benefits">
+    <div class="benefits-inner">
+      <h2>MediQuo está com você em cada passo do seu cuidado mental</h2>
+      <p class="section-sub">Você contrata uma consulta médica por R$ 149,90. O psiquiatra poderá emitir receita digital ou atestado, caso considere indicado após avaliação clínica.</p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Consulta rápida e prática</h3>
+          <p>Sem burocracia e triagens. Fale direto com o psiquiatra em poucos minutos.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>Receita digital válida</h3>
+          <p>A receita digital (se prescrita) chega em minutos e é válida em todo o Brasil.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Privacidade total</h3>
+          <p>Atendimento 100% sigiloso e seguro. Sua saúde mental tratada com respeito.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <h3>Facilidade de pagamento</h3>
+          <p>Pague via PIX ou cartão de crédito. Simples e rápido.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Profissionais qualificados</h3>
+          <p>Psiquiatras à disposição para atender você a qualquer momento do dia.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Flexibilidade total</h3>
+          <p>Realize a consulta em até 12h após a confirmação. Você escolhe quando.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey steps -->
+  <section class="journey">
+    <div class="journey-inner">
+      <h2>Sua agenda de cuidados é você quem faz</h2>
+      <div class="journey-step">
+        <div class="journey-num">1</div>
+        <div>
+          <h3>Faça seu cadastro</h3>
+          <p>Envie suas informações previamente para o atendimento ser mais efetivo.</p>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num">2</div>
+        <div>
+          <h3>Confirme sua consulta</h3>
+          <p>Escolha a melhor forma de pagamento e confirme o atendimento online.</p>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num">3</div>
+        <div>
+          <h3>Faça a sua consulta</h3>
+          <p>Sua consulta inicia em até 10 minutos após a confirmação. No caso de imprevisto, você pode realizá-la em até 12h.</p>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-num">4</div>
+        <div>
+          <h3>Receba a sua receita</h3>
+          <p>Após a avaliação e orientação médica, inicie o tratamento com segurança, caso haja indicação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <h2>Tratamento com confiança</h2>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Consulta rápida, médico muito atencioso. Me senti acolhida e segura para falar sobre o que estava sentindo."</p>
+        <div class="author">– Mariana, 34 anos</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Atendimento excelente, sem burocracia e com total privacidade. Consegui minha receita na mesma hora."</p>
+        <div class="author">– Ricardo, 28 anos</div>
+      </div>
+      <div class="avg-rating">
+        Nota média: <strong>4,9</strong>/5 baseada em milhares de atendimentos
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Não deixe para amanhã o cuidado com a sua saúde mental</h2>
+    <p>Aproveite a consulta 100% online para falar com o psiquiatra hoje mesmo.</p>
+    <button class="btn-white" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'})">Fazer a Consulta Agora</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>MediQuo – Consultas médicas online com prescrição rápida, segura e legal.</p>
+    <p>Consulta 100% segura e sigilosa</p>
+    <div class="footer-links">
+      <a href="#">Sobre</a>
+      <a href="#">Termos de Uso</a>
+      <a href="#">Políticas de Privacidade</a>
+    </div>
+    <p style="margin-top:12px;">RT: Cássio Fernando Reis • CRM: MG 33167</p>
+  </footer>
+</div>
+
+<!-- ====== SCREEN 2: VERIFICATION ====== -->
+<div id="screen-verify" class="screen">
+  <div class="verify-container">
+    <div class="verify-card">
+      <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+      </div>
+      <h2>Verifique seu e-mail</h2>
+      <p class="desc">Enviamos um código de 6 dígitos para <strong id="verify-email"></strong></p>
+      <div class="code-inputs" id="code-inputs">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]">
+      </div>
+      <button class="btn-primary" id="btn-verify" disabled>Verificar Código</button>
+      <p class="resend-link mt-2">Não recebeu? <a onclick="alert('Código reenviado!')">Reenviar código</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SCREEN 3: PAYMENT ====== -->
+<div id="screen-payment" class="screen">
+  <div class="payment-container">
+    <div class="payment-inner">
+      <div class="payment-main">
+        <h2 class="payment-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Finalizar Consulta
+        </h2>
+
+        <!-- Personal data -->
+        <div class="form-section">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Dados Pessoais
+          </h3>
+          <div class="form-field">
+            <label>Nome completo</label>
+            <input type="text" id="pay-name" placeholder="Seu nome completo" required>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Data de nascimento</label>
+              <input type="text" id="pay-dob" placeholder="DD/MM/AAAA" maxlength="10">
+            </div>
+            <div class="form-field">
+              <label>CPF</label>
+              <input type="text" id="pay-cpf" placeholder="000.000.000-00" maxlength="14">
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment method -->
+        <div class="form-section">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Método de Pagamento
+          </h3>
+          <div class="payment-toggle">
+            <div class="pay-option selected" data-method="card" onclick="selectPayment('card')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Cartão de Crédito
+            </div>
+            <div class="pay-option" data-method="pix" onclick="selectPayment('pix')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13.36 5.64l4.95 4.95a1 1 0 010 1.41l-4.95 4.95a1 1 0 01-1.41 0L6.99 12a1 1 0 010-1.41l4.96-4.95a1 1 0 011.41 0z"/></svg>
+              PIX
+            </div>
+          </div>
+
+          <!-- Card fields -->
+          <div id="card-fields">
+            <div class="form-field">
+              <label>Número do cartão</label>
+              <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19">
+            </div>
+            <div class="form-row three">
+              <div class="form-field">
+                <label>Validade</label>
+                <input type="text" id="card-exp" placeholder="MM/AA" maxlength="5">
+              </div>
+              <div class="form-field">
+                <label>CVV</label>
+                <input type="text" id="card-cvv" placeholder="000" maxlength="4">
+              </div>
+              <div class="form-field" style="grid-column: span 1;">
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Nome no cartão</label>
+              <input type="text" id="card-name" placeholder="Como está no cartão">
+            </div>
+          </div>
+
+          <!-- PIX info -->
+          <div id="pix-fields" class="hidden">
+            <div class="pix-info">
+              <h4>Pagamento via PIX</h4>
+              <p style="font-size:14px; color:var(--gray-600); margin-bottom:16px;">Como funciona o PIX:</p>
+              <div class="pix-step">
+                <div class="pix-step-num">1</div>
+                <span>Após confirmar, você receberá um QR Code</span>
+              </div>
+              <div class="pix-step">
+                <div class="pix-step-num">2</div>
+                <span>Escaneie com seu banco ou copie e cole a chave</span>
+              </div>
+              <div class="pix-step">
+                <div class="pix-step-num">3</div>
+                <span>Pagamento processado instantaneamente</span>
+              </div>
+              <div class="pix-step">
+                <div class="pix-step-num">4</div>
+                <span>Consulta liberada automaticamente</span>
+              </div>
+              <div class="pix-warning">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span><strong>Importante:</strong> O PIX expira em 30 minutos. Certifique-se de efetuar o pagamento dentro deste prazo.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-section" id="address-section">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Endereço de Cobrança
+          </h3>
+          <div class="form-row">
+            <div class="form-field">
+              <label>CEP</label>
+              <input type="text" id="pay-cep" placeholder="00000-000" maxlength="9">
+            </div>
+            <div class="form-field">
+              <label>Número</label>
+              <input type="text" id="pay-num" placeholder="Nº">
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Logradouro</label>
+            <input type="text" id="pay-street" placeholder="Rua, Avenida...">
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Complemento <span style="color:var(--gray-400)">(opcional)</span></label>
+              <input type="text" id="pay-comp" placeholder="Apto, Bloco...">
+            </div>
+            <div class="form-field">
+              <label>Bairro</label>
+              <input type="text" id="pay-bairro" placeholder="Bairro">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Cidade</label>
+              <input type="text" id="pay-city" placeholder="Cidade">
+            </div>
+            <div class="form-field">
+              <label>Estado</label>
+              <select id="pay-state">
+                <option value="">Selecione</option>
+                <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+                <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+                <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+                <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+                <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+                <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+                <option>SP</option><option>SE</option><option>TO</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-primary" id="btn-confirm" style="margin-top:8px;">Confirmar Consulta</button>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="order-summary">
+        <h3>Resumo do pedido</h3>
+        <div class="order-line">
+          <span>Consulta de Psiquiatria</span>
+          <span>R$ 149,90</span>
+        </div>
+        <div class="order-total">
+          <span>Total</span>
+          <span>R$ 149,90</span>
+        </div>
+        <div class="included-list">
+          <h4>O que está incluso:</h4>
+          <div class="included-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Consulta médica online de psiquiatria (sem retorno incluso)</span>
+          </div>
+          <div class="included-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Médico especialista qualificado</span>
+          </div>
+          <div class="included-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Atendimento em horário flexível</span>
+          </div>
+          <div class="included-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Receita médica digital (se necessário)</span>
+          </div>
+        </div>
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Pagamento seguro
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Consulta válida por até 12h
+          </div>
+          <div class="trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Suporte técnico incluído
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SCREEN 4: PIX QR CODE ====== -->
+<div id="screen-pix" class="screen">
+  <div class="pix-qr-container">
+    <div class="pix-qr-card">
+      <h2>Pagamento via PIX</h2>
+      <div class="pix-amount">R$ 149,90</div>
+      <div class="qr-placeholder">
+        <!-- Mock QR Code SVG -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="#fff"/>
+          <!-- QR finder patterns -->
+          <rect x="10" y="10" width="50" height="50" fill="#1a1a2e" rx="4"/>
+          <rect x="16" y="16" width="38" height="38" fill="#fff" rx="2"/>
+          <rect x="22" y="22" width="26" height="26" fill="#1a1a2e" rx="2"/>
+          <rect x="140" y="10" width="50" height="50" fill="#1a1a2e" rx="4"/>
+          <rect x="146" y="16" width="38" height="38" fill="#fff" rx="2"/>
+          <rect x="152" y="22" width="26" height="26" fill="#1a1a2e" rx="2"/>
+          <rect x="10" y="140" width="50" height="50" fill="#1a1a2e" rx="4"/>
+          <rect x="16" y="146" width="38" height="38" fill="#fff" rx="2"/>
+          <rect x="22" y="152" width="26" height="26" fill="#1a1a2e" rx="2"/>
+          <!-- Data modules - random pattern -->
+          <rect x="70" y="10" width="8" height="8" fill="#1a1a2e"/><rect x="86" y="10" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="102" y="10" width="8" height="8" fill="#1a1a2e"/><rect x="118" y="10" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="70" y="22" width="8" height="8" fill="#1a1a2e"/><rect x="94" y="22" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="110" y="22" width="8" height="8" fill="#1a1a2e"/><rect x="126" y="22" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="78" y="34" width="8" height="8" fill="#1a1a2e"/><rect x="102" y="34" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="118" y="34" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="70" y="46" width="8" height="8" fill="#1a1a2e"/><rect x="86" y="46" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="110" y="46" width="8" height="8" fill="#1a1a2e"/><rect x="126" y="46" width="8" height="8" fill="#1a1a2e"/>
+          <!-- Row patterns -->
+          <rect x="10" y="70" width="8" height="8" fill="#1a1a2e"/><rect x="26" y="70" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="42" y="70" width="8" height="8" fill="#1a1a2e"/><rect x="70" y="70" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="94" y="70" width="8" height="8" fill="#1a1a2e"/><rect x="110" y="70" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="140" y="70" width="8" height="8" fill="#1a1a2e"/><rect x="156" y="70" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="172" y="70" width="8" height="8" fill="#1a1a2e"/><rect x="182" y="70" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="18" y="82" width="8" height="8" fill="#1a1a2e"/><rect x="34" y="82" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="50" y="82" width="8" height="8" fill="#1a1a2e"/><rect x="78" y="82" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="102" y="82" width="8" height="8" fill="#1a1a2e"/><rect x="126" y="82" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="148" y="82" width="8" height="8" fill="#1a1a2e"/><rect x="172" y="82" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="10" y="94" width="8" height="8" fill="#1a1a2e"/><rect x="42" y="94" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="70" y="94" width="8" height="8" fill="#1a1a2e"/><rect x="86" y="94" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="110" y="94" width="8" height="8" fill="#1a1a2e"/><rect x="140" y="94" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="164" y="94" width="8" height="8" fill="#1a1a2e"/><rect x="182" y="94" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="26" y="106" width="8" height="8" fill="#1a1a2e"/><rect x="50" y="106" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="78" y="106" width="8" height="8" fill="#1a1a2e"/><rect x="94" y="106" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="118" y="106" width="8" height="8" fill="#1a1a2e"/><rect x="148" y="106" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="172" y="106" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="10" y="118" width="8" height="8" fill="#1a1a2e"/><rect x="34" y="118" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="50" y="118" width="8" height="8" fill="#1a1a2e"/><rect x="70" y="118" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="102" y="118" width="8" height="8" fill="#1a1a2e"/><rect x="126" y="118" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="156" y="118" width="8" height="8" fill="#1a1a2e"/><rect x="182" y="118" width="8" height="8" fill="#1a1a2e"/>
+          <!-- Bottom rows -->
+          <rect x="70" y="140" width="8" height="8" fill="#1a1a2e"/><rect x="86" y="140" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="110" y="140" width="8" height="8" fill="#1a1a2e"/><rect x="140" y="140" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="164" y="140" width="8" height="8" fill="#1a1a2e"/><rect x="182" y="140" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="78" y="152" width="8" height="8" fill="#1a1a2e"/><rect x="94" y="152" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="118" y="152" width="8" height="8" fill="#1a1a2e"/><rect x="148" y="152" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="172" y="152" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="70" y="164" width="8" height="8" fill="#1a1a2e"/><rect x="102" y="164" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="126" y="164" width="8" height="8" fill="#1a1a2e"/><rect x="156" y="164" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="182" y="164" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="78" y="176" width="8" height="8" fill="#1a1a2e"/><rect x="94" y="176" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="110" y="176" width="8" height="8" fill="#1a1a2e"/><rect x="140" y="176" width="8" height="8" fill="#1a1a2e"/>
+          <rect x="164" y="176" width="8" height="8" fill="#1a1a2e"/><rect x="182" y="176" width="8" height="8" fill="#1a1a2e"/>
+          <!-- Timing pattern -->
+          <rect x="10" y="58" width="180" height="2" fill="#1a1a2e" opacity="0.08"/>
+          <rect x="58" y="10" width="2" height="180" fill="#1a1a2e" opacity="0.08"/>
+        </svg>
+      </div>
+      <div class="pix-copy-field">
+        <input type="text" value="00020126580014br.gov.bcb.pix0136mediquo-psiq-sim-2026" readonly id="pix-code">
+        <button class="btn-copy" onclick="copyPix()">Copiar</button>
+      </div>
+      <div class="pix-timer">
+        Expira em: <strong id="pix-countdown">29:59</strong>
+      </div>
+      <div class="pix-waiting">
+        <div class="spinner"></div>
+        Aguardando confirmação do pagamento...
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== SCREEN 5: SUCCESS ====== -->
+<div id="screen-success" class="screen">
+  <div class="success-container">
+    <div class="success-card">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>Pagamento confirmado!</h2>
+      <p>Sua consulta de psiquiatria foi confirmada com sucesso. Clique abaixo para agendar o melhor horário para o seu atendimento.</p>
+      <a href="https://agendazap.top/p/mediquo&service=849" class="btn-schedule">Agendar Consulta</a>
+      <div class="success-details">
+        <div class="success-detail-row">
+          <span>Serviço</span>
+          <strong>Consulta de Psiquiatria</strong>
+        </div>
+        <div class="success-detail-row">
+          <span>Valor pago</span>
+          <strong>R$ 149,90</strong>
+        </div>
+        <div class="success-detail-row">
+          <span>Método</span>
+          <strong>PIX</strong>
+        </div>
+        <div class="success-detail-row">
+          <span>Validade</span>
+          <strong>12 horas</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ====== NAVIGATION ======
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ====== LANDING ======
+const emailInput = document.getElementById('email-input');
+const check1 = document.getElementById('check1');
+const check2 = document.getElementById('check2');
+const btnStart = document.getElementById('btn-start');
+
+function validateLanding() {
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+  btnStart.disabled = !(emailValid && check1.checked && check2.checked);
+}
+
+emailInput.addEventListener('input', validateLanding);
+check1.addEventListener('change', validateLanding);
+check2.addEventListener('change', validateLanding);
+
+btnStart.addEventListener('click', () => {
+  document.getElementById('verify-email').textContent = emailInput.value;
+  showScreen('verify');
+  // Focus first code input
+  setTimeout(() => document.querySelector('#code-inputs input').focus(), 400);
+});
+
+// ====== VERIFICATION ======
+const codeInputs = document.querySelectorAll('#code-inputs input');
+const btnVerify = document.getElementById('btn-verify');
+
+codeInputs.forEach((input, i) => {
+  input.addEventListener('input', (e) => {
+    const val = e.target.value.replace(/\D/g, '');
+    e.target.value = val;
+    if (val && i < codeInputs.length - 1) {
+      codeInputs[i + 1].focus();
+    }
+    checkCode();
+  });
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace' && !e.target.value && i > 0) {
+      codeInputs[i - 1].focus();
+    }
+  });
+  input.addEventListener('paste', (e) => {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+    codeInputs.forEach((inp, j) => { inp.value = paste[j] || ''; });
+    checkCode();
+  });
+});
+
+function checkCode() {
+  const code = Array.from(codeInputs).map(i => i.value).join('');
+  btnVerify.disabled = code.length !== 6;
+}
+
+btnVerify.addEventListener('click', () => {
+  showScreen('payment');
+});
+
+// ====== PAYMENT ======
+let paymentMethod = 'card';
+
+function selectPayment(method) {
+  paymentMethod = method;
+  document.querySelectorAll('.pay-option').forEach(el => {
+    el.classList.toggle('selected', el.dataset.method === method);
+  });
+  document.getElementById('card-fields').classList.toggle('hidden', method !== 'card');
+  document.getElementById('pix-fields').classList.toggle('hidden', method !== 'pix');
+  // Hide address section for pix? Keep it visible as per spec.
+}
+
+// Input masks
+document.getElementById('pay-dob').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g, '');
+  if (v.length > 2) v = v.slice(0,2) + '/' + v.slice(2);
+  if (v.length > 5) v = v.slice(0,5) + '/' + v.slice(5,9);
+  e.target.value = v;
+});
+
+document.getElementById('pay-cpf').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g, '');
+  if (v.length > 3) v = v.slice(0,3) + '.' + v.slice(3);
+  if (v.length > 7) v = v.slice(0,7) + '.' + v.slice(7);
+  if (v.length > 11) v = v.slice(0,11) + '-' + v.slice(11,13);
+  e.target.value = v;
+});
+
+document.getElementById('pay-cep').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g, '');
+  if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5,8);
+  e.target.value = v;
+});
+
+const cardNum = document.getElementById('card-number');
+if (cardNum) {
+  cardNum.addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g, '');
+    v = v.match(/.{1,4}/g)?.join(' ') || v;
+    e.target.value = v;
+  });
+}
+
+const cardExp = document.getElementById('card-exp');
+if (cardExp) {
+  cardExp.addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.length > 2) v = v.slice(0,2) + '/' + v.slice(2,4);
+    e.target.value = v;
+  });
+}
+
+// Confirm button
+document.getElementById('btn-confirm').addEventListener('click', () => {
+  // Basic validation
+  const name = document.getElementById('pay-name').value.trim();
+  const cpf = document.getElementById('pay-cpf').value.trim();
+  if (!name || !cpf) {
+    alert('Por favor, preencha todos os campos obrigatórios.');
+    return;
+  }
+
+  if (paymentMethod === 'pix') {
+    showScreen('pix');
+    startPixTimer();
+    // Auto-confirm after 10 seconds
+    setTimeout(() => {
+      showScreen('success');
+    }, 10000);
+  } else {
+    // Card: simulate instant processing
+    alert('Simulação: Pagamento com cartão processado com sucesso!');
+    showScreen('success');
+  }
+});
+
+// ====== PIX SCREEN ======
+let pixTimerInterval;
+
+function startPixTimer() {
+  let seconds = 30 * 60 - 1; // 29:59
+  const el = document.getElementById('pix-countdown');
+  clearInterval(pixTimerInterval);
+  pixTimerInterval = setInterval(() => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    el.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    seconds--;
+    if (seconds < 0) clearInterval(pixTimerInterval);
+  }, 1000);
+}
+
+function copyPix() {
+  const code = document.getElementById('pix-code');
+  code.select();
+  navigator.clipboard?.writeText(code.value);
+  const btn = document.querySelector('.btn-copy');
+  btn.textContent = 'Copiado!';
+  setTimeout(() => btn.textContent = 'Copiar', 2000);
+}
+</script>
+
+</body>
+</html>
